@@ -55,9 +55,15 @@ $query->bindParam(':leatherseats',$leatherseats,PDO::PARAM_STR);
 $query->bindParam(':id',$id,PDO::PARAM_STR);
 $query->execute();
 
+$sql = "INSERT INTO tblvehiclepricehistory (PricePerDay, CreatedAt, VehicleId) VALUES (:pricePerDay, :createdAt, :vehicleId) ON DUPLICATE KEY UPDATE PricePerDay=:pricePerDay";
+$query = $dbh->prepare($sql);
+$currentDate = date('Y-m-d');
+$query->bindParam(':pricePerDay',$priceperday);
+$query->bindParam(':createdAt',$currentDate);
+$query->bindParam(':vehicleId',$id);
+$query->execute();
+
 $msg="Data updated successfully";
-
-
 }
 
 
@@ -128,7 +134,7 @@ $msg="Data updated successfully";
 								<div class="panel panel-default">
 									<div class="panel-heading">Базовая информация</div>
 									<div class="panel-body">
-<?php if($msg){?><div class="succWrap"><strong>УСПЕШНО</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
+<?php if(isset($msg)){?><div class="succWrap"><strong>УСПЕШНО</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
 <?php 
 $id=intval($_GET['id']);
 $sql ="SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id as bid from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblvehicles.id=:id";
@@ -189,7 +195,7 @@ continue;
 <label class="col-sm-2 control-label">Тип топлива<span style="color:red">*</span></label>
 <div class="col-sm-4">
 <select class="selectpicker" name="fueltype" required>
-<option value="<?php echo htmlentities($results->FuelType);?>"> <?php echo htmlentities($result->FuelType);?> </option>
+<option value="<?php echo htmlentities($result->FuelType);?>"> <?php echo htmlentities($result->FuelType);?> </option>
 
 <option value="Petrol">Бензин</option>
 <option value="Diesel">Дизель</option>

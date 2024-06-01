@@ -85,7 +85,6 @@ error_reporting(0);
               //Query for Listing count
               $sql = "SELECT id from tblvehicles";
               $query = $dbh->prepare($sql);
-              $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
               $query->execute();
               $results = $query->fetchAll(PDO::FETCH_OBJ);
               $cnt = $query->rowCount();

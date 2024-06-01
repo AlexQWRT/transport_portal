@@ -26,7 +26,7 @@
                 <li><a href="https://www.instagram.com/sergeimytnik"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
               </ul>
             </div>
-            <?php if (strlen($_SESSION['login']) == 0) {
+            <?php if (empty($_SESSION['login'])) {
             ?>
               <div class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Вход / Регистрация</a> </div>
             <?php } else {
@@ -50,7 +50,7 @@
           <ul>
             <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>
                 <?php
-                $email = $_SESSION['login'];
+                $email = $_SESSION['login'] ?? '';
                 $sql = "SELECT FullName FROM tblusers WHERE EmailId=:email ";
                 $query = $dbh->prepare($sql);
                 $query->bindParam(':email', $email, PDO::PARAM_STR);
@@ -63,7 +63,7 @@
                   }
                 } ?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
               <ul class="dropdown-menu">
-                <?php if ($_SESSION['login']) { ?>
+                <?php if (!empty($_SESSION['login'])) { ?>
                   <li><a href="profile.php">Настройки профиля</a></li>
                   <li><a href="update-password.php">Обновить пароль</a></li>
                   <li><a href="my-booking.php">Мое бронирование</a></li>

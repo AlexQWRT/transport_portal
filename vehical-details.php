@@ -297,7 +297,9 @@ if (isset($_POST['submit'])) {
                     </div>
                   </div>
                 </div>
-
+                <div>
+                  <canvas id="discountsChart"></canvas>
+                </div>
               </div>
           <?php }
       } ?>
@@ -324,7 +326,7 @@ if (isset($_POST['submit'])) {
                   <div class="form-group">
                     <textarea rows="4" class="form-control" name="message" placeholder="Сообщение" required></textarea>
                   </div>
-                  <?php if ($_SESSION['login']) { ?>
+                  <?php if (!empty($_SESSION['login'])) { ?>
                     <div class="form-group">
                       <input type="submit" class="btn" name="submit" value="Бронь">
                     </div>
@@ -410,7 +412,43 @@ if (isset($_POST['submit'])) {
       <script src="assets/js/bootstrap-slider.min.js"></script>
       <script src="assets/js/slick.min.js"></script>
       <script src="assets/js/owl.carousel.min.js"></script>
+      <script src="assets/js/chart.js"></script>
+      <script>
+          const arrayRange = (start, stop, step) =>
+              Array.from(
+                  { length: (stop - start) / step + 1 },
+                  (value, index) => start + index * step
+              );
 
+          const ctx = document.getElementById('discountsChart');
+
+          const labels = arrayRange(30, 2, -1)
+              .map((days) => new Intl.RelativeTimeFormat('ru-RU').format(-days, 'day'));
+          labels.push('Вчера');
+          labels.push('Сегодня');
+
+          const data = <?php echo json_encode(getVehiclePrices($vhid, 30)) ?>;
+
+          new Chart(ctx, {
+              type: 'line',
+              data: {
+                  labels: labels,
+                  datasets: [{
+                      label: 'График цен за последний месяц',
+                      data: data,
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      y: {
+                          beginAtZero: true
+                      }
+                  }
+              }
+          });
+
+      </script>
 </body>
 
 </html>
