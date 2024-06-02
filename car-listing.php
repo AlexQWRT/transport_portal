@@ -105,7 +105,7 @@ error_reporting(0);
                 </div>
                 <div class="product-listing-content">
                   <h5><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?> , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
-                  <p class="list-price">BYN&nbsp<?php echo htmlentities($result->PricePerDay); ?> /ваша скидка</p>
+                  <p class="list-price">BYN&nbsp<?php echo htmlentities($result->PricePerDay); ?> /ваша акционная цена</p>
                   <ul>
                     <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?> мест</li>
                     <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> год</li>
@@ -176,7 +176,7 @@ error_reporting(0);
                     <li class="gray-bg">
                       <div class="recent_post_img"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" alt="image"></a> </div>
                       <div class="recent_post_title"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?> , <?php echo htmlentities($result->VehiclesTitle); ?></a>
-                        <p class="widget_price">BYN&nbsp<?php echo htmlentities($result->PricePerDay); ?> /скидка</p>
+                        <p class="widget_price">BYN&nbsp<?php echo htmlentities($result->PricePerDay); ?> /акционная цена</p>
                       </div>
                     </li>
                 <?php }

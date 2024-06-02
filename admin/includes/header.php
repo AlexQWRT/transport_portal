@@ -1,5 +1,5 @@
 <div class="brand clearfix">
-	<a href="dashboard.php" style="font-size: 20px;">Веб-сервис с акциями и скидками на новые транспортные средства | Панель администратора</a>  
+	<a href="dashboard.php" style="font-size: 20px;">Панель администратора</a>
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
 			
