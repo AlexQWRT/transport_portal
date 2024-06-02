@@ -117,7 +117,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="col-md-3">
               <div class="price_info">
-                <p>BYN&nbsp<?php echo htmlentities($result->PricePerDay); ?> </p>Ваша скидка
+                <p>BYN&nbsp<?php echo htmlentities($result->PricePerDay); ?> </p>Цена
 
               </div>
             </div>
@@ -434,7 +434,7 @@ if (isset($_POST['submit'])) {
               data: {
                   labels: labels,
                   datasets: [{
-                      label: 'График цен за последний месяц',
+                      label: 'График акционных цен за последний месяц',
                       data: data,
                       borderWidth: 1
                   }]
