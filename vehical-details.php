@@ -117,7 +117,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="col-md-3">
               <div class="price_info">
-                <p>BYN&nbsp<?php echo htmlentities($result->PricePerDay); ?> </p>Цена
+                <p>BYN&nbsp<?php echo htmlentities($result->PricePerDay); ?> </p>Акционная цена
 
               </div>
             </div>

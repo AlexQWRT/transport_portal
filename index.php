@@ -110,7 +110,7 @@ error_reporting(0);
                     </div>
                     <div class="car-title-m">
                       <h6><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?> , <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
-                      <span class="price">BYN&nbsp<?php echo htmlentities($result->PricePerDay); ?> /цена</span>
+                      <span class="price">BYN&nbsp<?php echo htmlentities($result->PricePerDay); ?> /акционная цена</span>
                     </div>
                     <div class="inventory_info_m">
                       <p><?php echo mb_substr($result->VehiclesOverview, 0, 55);echo "..." ?></p>
